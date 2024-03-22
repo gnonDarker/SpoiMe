@@ -1,0 +1,15 @@
+spring.application.name:
+  spoilme2
+spring.datasource:
+  driver-class-name:
+    com.mysql.cj.jdbc.Driver
+  url:
+      jdbc:mysql://kin.qinsy.ltd:3306/spoilme?useUnicode=true&characterEncoding=UTF-8
+  username:
+    spoilme
+  password:
+    spoilme
+spring.data.redis:
+  host=kin.qinsy.ltd
+  password=lxz2100301322@
+  port=6379
