@@ -11,5 +11,5 @@ spring.datasource:
     spoilme
 spring.data.redis:
   host=kin.qinsy.ltd
-  password=lxz2100301322@
+  password=123456
   port=6379
