@@ -1,13 +1,13 @@
-package com.example.spoilme2;
+package com.example.spoilme;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Spoilme2Application {
+public class SpoilmeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Spoilme2Application.class, args);
+        SpringApplication.run(SpoilmeApplication.class, args);
     }
 
 }
