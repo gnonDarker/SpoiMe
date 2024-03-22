@@ -13,3 +13,18 @@ spring.data.redis:
   host=kin.qinsy.ltd
   password=123456
   port=6379
+
+# mybatis日志输出路径 : Console; 驼峰命名自动映射开关: 打开
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+# 修改端口号
+server:
+  port: 8080
+
+# 开始事务管理日志
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransctionManager: debug

@@ -12,5 +12,5 @@ public interface UserService {
 
     void register(User user);
 
-    public void deleteUser(int id);
+    void deleteUser(int id);
 }
