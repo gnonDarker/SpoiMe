@@ -12,6 +12,11 @@ import java.sql.Time;
 public class DonationMoney {
     private Integer dMoneyId;
     private Integer dMoneyUserId;
+    private String dMoneyRescueName;
+    private String dMoneyCourierNumber;
     private Float dMoneyPrice;
+    private Short dMoneyIsAnonym;
+    private String dMoneyPhone;
+    private String dMoneyMessage;
     private Time dMoneyTime;
 }
