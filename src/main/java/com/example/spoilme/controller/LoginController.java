@@ -20,7 +20,7 @@ public class LoginController {
     @PostMapping("/login")
     public Result login(@RequestBody User user){
 
-        log.info("员工登录: {}", user);
+        log.info("登录: {}", user);
         User u = userService.checkExist(user);
         //用户名存在
         if(u != null){
