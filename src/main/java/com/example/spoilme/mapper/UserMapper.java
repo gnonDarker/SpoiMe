@@ -1,10 +1,7 @@
 package com.example.spoilme.mapper;
 
 import com.example.spoilme.pojo.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -30,4 +27,6 @@ public interface UserMapper {
 
     @Delete("delete from t_users where u_id = #{uId}")
     void deleteUserById(int id);
+
+    void modifyUser(User user);
 }

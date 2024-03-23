@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService {
         //调用数据库删除用户
         userMapper.deleteUserById(id);
     }
+
+    @Override
+    public void modifyUser(User user) {
+        userMapper.modifyUser(user);
+    }
 }

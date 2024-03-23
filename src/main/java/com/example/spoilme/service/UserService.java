@@ -13,4 +13,6 @@ public interface UserService {
     void register(User user);
 
     void deleteUser(int id);
+
+    void modifyUser(User user);
 }

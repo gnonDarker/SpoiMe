@@ -11,6 +11,6 @@ public class RescueStation {
     private Integer rId;
     private Integer rOwnerId;
     private String rAddress;
-    private Integer rPhone;
+    private String rPhone;
     private String rQrcode;
 }
