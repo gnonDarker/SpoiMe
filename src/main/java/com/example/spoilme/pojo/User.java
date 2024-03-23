@@ -12,7 +12,7 @@ import java.sql.Time;
 public class User {
     private Integer uId;//ID
     private String uName;//用户名
-    private String UPassword;//密码
+    private String uPassword;//密码
     private Integer uSex;//用户性别
     private Time uDate;//生日
     private String uMail;//邮箱

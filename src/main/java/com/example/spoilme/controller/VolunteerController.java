@@ -22,9 +22,7 @@ public class VolunteerController {
     public Result applyForVolunteer(Volunteer volunteer){
 
         log.info("申请者："+volunteer);
-
         volunteerService.addVolunteer(volunteer);
-
         return Result.success("申请成功");
     }
 }

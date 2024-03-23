@@ -12,8 +12,7 @@ public interface UserMapper {
     @Select("select * from t_users")
     List<User> getUsers();
 
-    /*通过username和password查询是否存在用户
-    * sql语句定义在映射文件中以作示例*/
+    @Select("select * from t_users where u_name=#{uName} and u_password=#{uPassword}")
     User getByUsernameAndPassword(User user);
 
     /*通过username和password增加一个用户*/

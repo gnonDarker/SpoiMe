@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.spoilme.mapper.UserMapper">
+    <update id="modifyUser">
+        update t_users set
+        <where>
+            <if test="uName != null">
+                t_users.u_name = #{uName}
+            </if>
+
+            <if test="uDate != null">
+                and u_date = #{uDate}
+            </if>
+
+            <if test="uMail != null">
+                and u_mail=#{uMail}
+            </if>
+            <if test="uPassword != null">
+                and u_password=#{uPassword}
+            </if>
+            <if test="uPhone != null">
+                and u_phone=#{uPhone}
+            </if>
+            <if test="uSex != null">
+                and u_sex=#{uSex}
+            </if>
+        </where>
+        where u_id = #{uId}
+    </update>
+</mapper>

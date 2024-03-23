@@ -28,7 +28,7 @@ public class DonationController {
     }
     //todo: 捐款
     @PutMapping("/donate/money")
-    public Result donateMoney(DonationMoney donationMoney){
+    public Result donateMoney(@RequestBody DonationMoney donationMoney){
         donationService.donateMoney(donationMoney);
         return Result.success("捐款成功");
     }
