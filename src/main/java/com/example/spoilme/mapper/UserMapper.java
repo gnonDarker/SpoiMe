@@ -1,10 +1,7 @@
 package com.example.spoilme.mapper;
 
 import com.example.spoilme.pojo.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -15,8 +12,7 @@ public interface UserMapper {
     @Select("select * from t_users")
     List<User> getUsers();
 
-    /*通过username和password查询是否存在用户
-    * sql语句定义在映射文件中以作示例*/
+    @Select("select * from t_users where u_name=#{uName} and u_password=#{uPassword}")
     User getByUsernameAndPassword(User user);
 
     /*通过username和password增加一个用户*/
@@ -30,4 +26,6 @@ public interface UserMapper {
 
     @Delete("delete from t_users where u_id = #{uId}")
     void deleteUserById(int id);
+
+    void modifyUser(User user);
 }
