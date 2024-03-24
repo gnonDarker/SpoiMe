@@ -69,7 +69,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
             }
             case MESSAGE -> {
                 //读取redis 查看是否有离线消息
-                Set<String> keys = redisTemplate.keys("message:*");
+                Set<String> keys = redisTemplate.keys("message:"+chatMessage.getUserId()+"*");
                 if(keys == null || keys.isEmpty()){
                     channelHandlerContext.channel().writeAndFlush(Result.success("无新消息").toJsonString());
                 }else {
@@ -82,7 +82,6 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
                 if(chatMessage.getTargetId()!=null){
                     //判断 目标对象是否在线
                     Channel targetChannel = IMServer.ONLINE.get("user:"+chatMessage.getTargetId());
-                    System.out.println(IMServer.ONLINE);
                     //不在线，将消息存入redis中
                     if(targetChannel == null || !targetChannel.isActive()){
                         //TODO
