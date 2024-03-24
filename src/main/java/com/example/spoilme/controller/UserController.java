@@ -3,6 +3,7 @@ package com.example.spoilme.controller;
 import com.example.spoilme.pojo.Result;
 import com.example.spoilme.pojo.User;
 import com.example.spoilme.service.UserService;
+import com.example.spoilme.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class UserController {
         //用户名存在
         if(u != null){
             u = userService.login(user);//执行登录操作
-            if(u != null) return Result.success(u);
+            if(u != null) return Result.success(JwtUtils.generateJwt("用户名",u.getName()));
             else return Result.error("用户名或密码错误");
         }
         //用户名不存在
@@ -35,7 +36,7 @@ public class UserController {
     public Result register(@RequestBody User user){
         log.info("用户注册："+user);
         userService.register(user);//执行注册操作
-        return Result.success("注册成功");
+        return Result.success(JwtUtils.generateJwt("用户名",user.getName()));
     }
     @GetMapping("/user/list")
     public Result getUserList(){

@@ -3,6 +3,7 @@ package com.example.spoilme.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.impl.JwtMap;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -18,8 +19,19 @@ public class JwtUtils {
      * @return
      */
 
+    //TODO 根据两个字符串生成Token
+    public static String generateJwt(String key,String value){
+        Map<String,Object> claims = new JwtMap();
+        claims.put(key,value);
+        String jwt = Jwts.builder()
+                .addClaims(claims)
+                .signWith(SignatureAlgorithm.HS256, signKey)
+                .setExpiration(new Date(System.currentTimeMillis() + expire))
+                .compact();
+        return jwt;
+    }
     //TODO 根据Map对象生成Token
-    public static String generateJwt(Map<String, Object> claims){
+    public static String generateJwt(Map<String,Object> claims){
         String jwt = Jwts.builder()
                 .addClaims(claims)
                 .signWith(SignatureAlgorithm.HS256, signKey)

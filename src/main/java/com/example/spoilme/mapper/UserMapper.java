@@ -12,19 +12,19 @@ public interface UserMapper {
     @Select("select * from t_users")
     List<User> getUsers();
 
-    @Select("select * from t_users where u_name=#{uName} and u_password=#{uPassword}")
+    @Select("select * from t_users where nickname=#{uName} and password=#{uPassword}")
     User getByUsernameAndPassword(User user);
 
     /*通过username和password增加一个用户*/
-    @Insert("INSERT INTO t_users (u_name, u_password)  VALUES (#{uName},#{uPassword})")
+    @Insert("INSERT INTO t_users (nickname, password)  VALUES (#{uName},#{uPassword})")
     void addByUsernameAndPassword(User user);
 
     /*通过username查询用户是否存在*/
-    @Select("select * from t_users where u_name=#{uName}")
+    @Select("select * from t_users where nickname=#{nickname}")
     User getByUsername(User user);
 
 
-    @Delete("delete from t_users where u_id = #{uId}")
+    @Delete("delete from t_users where id = #{uId}")
     void deleteUserById(int id);
 
     void modifyUser(User user);
