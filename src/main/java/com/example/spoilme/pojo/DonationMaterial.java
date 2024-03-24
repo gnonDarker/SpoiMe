@@ -11,13 +11,13 @@ import java.sql.Time;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DonationMaterial {
-    private Integer dMaterialId;
-    private Integer dMaterialUserId;
-    private String dMaterialRescueName;
-    private String dMaterialCourierNumber;
-    private String dMaterialName;
-    private Short dMaterialIsAnonym;
-    private String dMaterialPhone;
-    private String dMaterialMessage;
-    private Time dMaterialTime;
+    private Integer materialId;
+    private Integer materialUserId;
+    private String materialRescueName;
+    private String materialCourierNumber;
+    private String materialName;
+    private Short materialIsAnonym;
+    private String materialPhone;
+    private String materialMessage;
+    private Time materialTime;
 }

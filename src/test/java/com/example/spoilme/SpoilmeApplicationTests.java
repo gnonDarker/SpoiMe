@@ -1,6 +1,6 @@
 package com.example.spoilme;
 
-import com.example.spoilme.controller.LoginController;
+import com.example.spoilme.controller.UserController;
 import com.example.spoilme.netty.ChatMessage;
 import com.example.spoilme.pojo.User;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ import java.util.Date;
 class SpoilmeApplicationTests {
 
     @Autowired
-    LoginController loginController;
+    UserController loginController;
 
     @Test
     void contextLoads() {
@@ -34,5 +34,4 @@ class SpoilmeApplicationTests {
         ChatMessage rs2 = (ChatMessage) redisTemplate.opsForValue().get("userKey");
         System.out.println("rs2 = " + rs2);
     }
-
 }

@@ -32,7 +32,7 @@ public class JwtUtils {
      * TODO: 根据Token生成新的Token*/
     public static String generateJwt(String token){
         Map<String, Object> claims = new HashMap<>();
-        claims.put("项目作者：","njl/lzd/ltj/xrj");
+        claims.put("项目名称：","spoilme");
         return JwtUtils.generateJwt(claims);
     }
     /*

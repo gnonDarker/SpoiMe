@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RescueStation {
-    private Integer rId;
-    private Integer rOwnerId;
-    private String rAddress;
-    private String rPhone;
-    private String rQrcode;
+    private Integer id;
+    private Integer ownerId;
+    private String address;
+    private String phone;
+    private String qrcode;
 }

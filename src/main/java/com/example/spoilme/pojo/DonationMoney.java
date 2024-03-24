@@ -10,13 +10,13 @@ import java.sql.Time;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DonationMoney {
-    private Integer dMoneyId;
-    private Integer dMoneyUserId;
-    private String dMoneyRescueName;
-    private String dMoneyCourierNumber;
-    private Float dMoneyPrice;
-    private Short dMoneyIsAnonym;
-    private String dMoneyPhone;
-    private String dMoneyMessage;
-    private Time dMoneyTime;
+    private Integer moneyId;
+    private Integer moneyUserId;
+    private String moneyRescueName;
+    private String moneyCourierNumber;
+    private Float moneyPrice;
+    private Short moneyIsAnonym;
+    private String moneyPhone;
+    private String moneyMessage;
+    private Time moneyTime;
 }

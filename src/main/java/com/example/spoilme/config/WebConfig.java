@@ -18,8 +18,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginCheckInterceptor).addPathPatterns("/**").excludePathPatterns("/login")
-                .excludePathPatterns("/users").excludePathPatterns("/photos/**");
+        /*registry.addInterceptor(loginCheckInterceptor).addPathPatterns("/**").excludePathPatterns("/login")
+                .excludePathPatterns("/users")..excludePathPatterns("/register").excludePathPatterns("/photos/**");*/
+        //关闭拦截器便于测试
     }
 
     //跨域配置

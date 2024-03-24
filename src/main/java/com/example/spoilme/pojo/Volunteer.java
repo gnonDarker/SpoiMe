@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Volunteer {
-    private Integer vId;
-    private Integer vUserId;
-    private String vName;
-    private Boolean vSex;
-    private Integer vPhone;
-    private String vSpareTime;
-    private String vWechat;
-    private Boolean vExperience;
+    private Integer id;
+    private Integer userId;
+    private String name;
+    private Boolean sex;
+    private Integer phone;
+    private String spareTime;
+    private String wechat;
+    private Boolean experience;
 }
