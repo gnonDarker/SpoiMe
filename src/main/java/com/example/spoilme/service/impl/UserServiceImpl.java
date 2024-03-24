@@ -3,12 +3,14 @@ package com.example.spoilme.service.impl;
 import com.example.spoilme.mapper.UserMapper;
 import com.example.spoilme.pojo.User;
 import com.example.spoilme.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+    @Autowired
     private UserMapper userMapper;
 
     @Override

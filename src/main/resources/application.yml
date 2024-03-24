@@ -1,5 +1,7 @@
 spring.application.name:
   spoilme
+server:
+  port: 8080
 spring.datasource:
   driver-class-name:
     com.mysql.cj.jdbc.Driver
@@ -9,7 +11,13 @@ spring.datasource:
     spoilme
   password:
     spoilme
-spring.data.redis:
-  host=kin.qinsy.ltd
-  password=123456
-  port=6379
+
+spring:
+  data:
+    redis:
+      host: kin.qinsy.ltd
+      password: 123456
+      port: 6379
+netty:
+  socket:
+    port: 8081

@@ -5,6 +5,7 @@ import com.example.spoilme.pojo.User;
 import com.example.spoilme.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,6 @@ public class LoginController {
 
     @PostMapping("/login")
     public Result login(@RequestBody User user){
-
         log.info("员工登录: {}", user);
         User u = userService.checkExist(user);
         //用户名存在
