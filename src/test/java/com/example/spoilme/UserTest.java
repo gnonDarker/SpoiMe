@@ -12,8 +12,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 public class UserTest {
     @Autowired
     UserController loginController;
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
     @Test
     void register() {
         User user = new User();

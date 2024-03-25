@@ -11,9 +11,14 @@ public class Volunteer {
     private Integer id;
     private Integer userId;
     private String name;
-    private Boolean sex;
-    private Integer phone;
-    private String spareTime;
+    private Short sex;
+    private String phone;
     private String wechat;
-    private Boolean experience;
+    private String spareTime;
+    private Short experience;
+    private String nickname;
+    private Integer age;
+    private String address;
+    private String skill;
+    private Short state;
 }

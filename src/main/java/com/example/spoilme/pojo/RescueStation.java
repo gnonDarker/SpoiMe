@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 public class RescueStation {
     private Integer id;
     private Integer ownerId;
+    private String name;
     private String address;
     private String phone;
     private String qrcode;
+    private Short state;
 }

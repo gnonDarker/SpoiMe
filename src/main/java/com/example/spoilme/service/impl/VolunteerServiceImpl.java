@@ -24,4 +24,14 @@ public class VolunteerServiceImpl implements VolunteerService {
     public List<Volunteer> getVolunteerList() {
         return volunteerMapper.getVolunteerList();
     }
+
+    @Override
+    public void modifyVolunteer(Volunteer volunteer) {
+        volunteerMapper.modifyVolunteer(volunteer);
+    }
+
+    @Override
+    public void deleteVolunteer(Volunteer volunteer) {
+        volunteerMapper.deleteVolunteer(volunteer);
+    }
 }

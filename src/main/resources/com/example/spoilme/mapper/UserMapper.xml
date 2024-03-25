@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.spoilme.mapper.UserMapper">
+    <update id="modifyUser" parameterType="com.example.spoilme.pojo.User">
+        update t_users
+        <trim prefix="set" suffixOverrides=",">
+            <if test="nickname != null">nickname = #{nickname},</if>
+            <if test="password != null">password=#{password},</if>
+            <if test="sex != null">sex=#{sex}, </if>
+            <if test="date != null">date = #{date},</if>
+            <if test="mail != null">mail = #{mail}, </if>
+            <if test="phone != null"> phone=#{phone}, </if>
+        </trim>
+        where id = #{id}
+    </update>
+</mapper>

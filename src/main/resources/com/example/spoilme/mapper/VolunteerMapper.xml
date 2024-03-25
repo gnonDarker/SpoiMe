@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.spoilme.mapper.VolunteerMapper">
+    <update id="modifyVolunteer" parameterType="com.example.spoilme.pojo.Volunteer">
+        update t_volunteers
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="wechat != null">wechat = #{wechat},</if>
+            <if test="spareTime != null">spare_time=#{spareTime},</if>
+            <if test="nickname != null">nickname=#{nickname},</if>
+            <if test="age != null">age=#{age},</if>
+            <if test="address != null">address=#{address}, </if>
+            <if test="skill != null"> skill=#{skill},</if>
+            <if test="state != null"> state=#{state},</if>
+        </trim>
+        where user_id = #{userId}
+    </update>
+
+</mapper>

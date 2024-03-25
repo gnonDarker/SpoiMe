@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class VolunteerController {
 
     //todo: 申请成为志愿者
     @PostMapping("/v/apply")
-    public Result applyForVolunteer(Volunteer volunteer){
+    public Result applyForVolunteer(@RequestBody Volunteer volunteer){
 
         log.info("申请者："+volunteer);
         volunteerService.addVolunteer(volunteer);
@@ -33,5 +34,17 @@ public class VolunteerController {
     public Result getVolunteerList(){
         List<Volunteer> list = volunteerService.getVolunteerList();
         return Result.success(list);
+    }
+    @PostMapping("/v/modify")
+    public Result modifyVolunteer(@RequestBody Volunteer volunteer){
+        log.info("修改志愿者信息"+volunteer);
+        volunteerService.modifyVolunteer(volunteer);
+        return Result.success("修改成功");
+    }
+    @PostMapping("/v/delete")
+    public Result deleteVolunteer(@RequestBody Volunteer volunteer){
+        log.info("删除志愿者"+volunteer);
+        volunteerService.deleteVolunteer(volunteer);
+        return Result.success("删除");
     }
 }

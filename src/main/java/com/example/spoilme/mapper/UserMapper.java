@@ -12,11 +12,11 @@ public interface UserMapper {
     @Select("select * from t_users")
     List<User> getUsers();
 
-    @Select("select * from t_users where nickname=#{uName} and password=#{uPassword}")
+    @Select("select * from t_users where nickname=#{nickname} and password=#{password}")
     User getByUsernameAndPassword(User user);
 
     /*通过username和password增加一个用户*/
-    @Insert("INSERT INTO t_users (nickname, password)  VALUES (#{uName},#{uPassword})")
+    @Insert("INSERT INTO t_users (nickname, password)  VALUES (#{nickname},#{password})")
     void addByUsernameAndPassword(User user);
 
     /*通过username查询用户是否存在*/
@@ -24,8 +24,10 @@ public interface UserMapper {
     User getByUsername(User user);
 
 
-    @Delete("delete from t_users where id = #{uId}")
+    @Delete("delete from t_users where id = #{id}")
     void deleteUserById(int id);
 
     void modifyUser(User user);
+    @Delete("delete from t_users where nickname = #{nickname}")
+    void deleteUserByName(String name);
 }

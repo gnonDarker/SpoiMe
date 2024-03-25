@@ -2,8 +2,14 @@ package com.example.spoilme.service;
 
 import com.example.spoilme.pojo.RescueStation;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface RescueStationService {
-    ArrayList<RescueStation> getRescueList();
+    List<RescueStation> getRescueList();
+
+    void addRescueStation(RescueStation rescueStation);
+
+    void deleteRescueStation(RescueStation rescueStation);
+
+    void modifyRescueStation(RescueStation rescueStation);
 }

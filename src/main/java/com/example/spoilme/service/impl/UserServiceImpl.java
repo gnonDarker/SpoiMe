@@ -3,12 +3,14 @@ package com.example.spoilme.service.impl;
 import com.example.spoilme.mapper.UserMapper;
 import com.example.spoilme.pojo.User;
 import com.example.spoilme.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
@@ -33,13 +35,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(User user) {
         //调用数据库删除用户
-        userMapper.deleteUserById(id);
+        if(user.getId() == null)
+            userMapper.deleteUserByName(user.getNickname());
+        else
+            userMapper.deleteUserById(user.getId());
     }
 
     @Override
     public void modifyUser(User user) {
+        log.info("修改用户信息Service层"+user);
         userMapper.modifyUser(user);
     }
 }

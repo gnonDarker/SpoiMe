@@ -8,4 +8,8 @@ public interface VolunteerService {
     void addVolunteer(Volunteer volunteer);
 
     List<Volunteer> getVolunteerList();
+
+    void modifyVolunteer(Volunteer volunteer);
+
+    void deleteVolunteer(Volunteer volunteer);
 }

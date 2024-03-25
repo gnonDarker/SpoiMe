@@ -26,6 +26,10 @@ public class Result {
         //查询 成功
         return new Result(200,"success", data);
     }
+    public static Result success(String msg,Object data){
+        //查询 成功
+        return new Result(200,msg, data);
+    }
     public static Result error(String msg){
         //失败响应
         return new Result(300,msg,null);
