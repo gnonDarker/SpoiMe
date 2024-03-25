@@ -35,3 +35,9 @@ logging:
 netty:
   socket:
     port: 8081
+#minio
+minio:
+  bucket: spoilme
+  endpoint: http://kin.qinsy.ltd:9080
+  accesskey: minioadmin
+  secretKey: minioadmin
