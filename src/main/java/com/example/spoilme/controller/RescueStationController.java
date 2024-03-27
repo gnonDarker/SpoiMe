@@ -5,10 +5,7 @@ import com.example.spoilme.pojo.Result;
 import com.example.spoilme.service.RescueStationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +16,9 @@ public class RescueStationController {
     private RescueStationService rescueStationService;
 
     @GetMapping("/rescue/list")
-    public Result getRescueList(){
-        List<RescueStation> list = rescueStationService.getRescueList();
+    public Result getRescueList(@RequestParam(required = false) Integer id,
+                                @RequestParam(required = false) Integer ownerId){
+        List<RescueStation> list = rescueStationService.getRescueList(id,ownerId);
         return Result.success(list);
     }
     @PostMapping("/rescue/apply")
@@ -39,9 +37,19 @@ public class RescueStationController {
         rescueStationService.modifyRescueStation(rescueStation);
         return Result.success("修改成功");
     }
-    @PostMapping("rescue/audit")
-    public Result auditRescue(@RequestBody RescueStation rescueStation){
-        rescueStationService.modifyRescueStation(rescueStation);
-        return Result.success("审核成功");
+    @PostMapping("/rescue/audit/approve")
+    public Result approveRescue(@RequestBody Integer id){
+        rescueStationService.approveRescueStation(id);
+        return Result.success("审核通过");
+    }
+    @PostMapping("/rescue/audit/reject")
+    public Result rejectRescue(@RequestBody Integer id, @RequestBody String msg){
+        rescueStationService.rejectRescueStation(id,msg);
+        return Result.success("审核不通过");
+    }
+    @PostMapping("/rescue/audit/reconsider")
+    public Result reconsiderRescue(@RequestBody Integer id, @RequestBody String msg){
+        rescueStationService.reconsiderRescueStation(id,msg);
+        return Result.success("已发起申诉");
     }
 }

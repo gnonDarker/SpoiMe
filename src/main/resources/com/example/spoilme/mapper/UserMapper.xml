@@ -9,6 +9,7 @@
         <trim prefix="set" suffixOverrides=",">
             <if test="nickname != null">nickname = #{nickname},</if>
             <if test="password != null">password=#{password},</if>
+            <if test="avatar != null">avatar=#{avatar},</if>
             <if test="sex != null">sex=#{sex}, </if>
             <if test="date != null">date = #{date},</if>
             <if test="mail != null">mail = #{mail}, </if>
@@ -16,4 +17,10 @@
         </trim>
         where id = #{id}
     </update>
+    <select id="getUsers" resultType="com.example.spoilme.pojo.User">
+        select * from t_users
+        <where>
+            <if test="id != null"> id = #{id}</if>
+        </where>
+    </select>
 </mapper>

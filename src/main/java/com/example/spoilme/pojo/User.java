@@ -13,6 +13,7 @@ public class User {
     private Integer id;//ID
     private String nickname;//昵称
     private String password;//密码
+    private String avatar;//头像
     private Short sex;//用户性别
     private Timestamp date;//生日
     private String mail;//邮箱

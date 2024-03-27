@@ -7,10 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.ResultExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,7 +18,6 @@ public class VolunteerController {
     @Autowired
     private VolunteerService volunteerService;
 
-    //todo: 申请成为志愿者
     @PostMapping("/v/apply")
     public Result applyForVolunteer(@RequestBody Volunteer volunteer){
 
@@ -31,8 +27,8 @@ public class VolunteerController {
     }
     //获取所有志愿者信息
     @GetMapping("/v/list")
-    public Result getVolunteerList(){
-        List<Volunteer> list = volunteerService.getVolunteerList();
+    public Result getVolunteerList(@RequestParam(required = false) Integer id){
+        List<Volunteer> list = volunteerService.getVolunteerList(id);
         return Result.success(list);
     }
     @PostMapping("/v/modify")
@@ -46,5 +42,20 @@ public class VolunteerController {
         log.info("删除志愿者"+volunteer);
         volunteerService.deleteVolunteer(volunteer);
         return Result.success("删除");
+    }
+    @PostMapping("/v/audit/approve")
+    public Result approveVolunteer(@RequestBody Integer id){
+        volunteerService.approveVolunteer(id);
+        return Result.success("审核通过");
+    }
+    @PostMapping("/v/audit/reject")
+    public Result rejectVolunteer(@RequestBody Integer id, @RequestBody String msg){
+        volunteerService.rejectVolunteer(id,msg);
+        return Result.success("审核不通过");
+    }
+    @PostMapping("/v/audit/reconsider")
+    public Result reconsiderVolunteer(@RequestBody Integer id, @RequestBody String msg){
+        volunteerService.reconsiderVolunteer(id,msg);
+        return Result.success("已发起申诉");
     }
 }

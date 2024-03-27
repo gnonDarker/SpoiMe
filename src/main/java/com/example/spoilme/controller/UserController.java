@@ -21,13 +21,11 @@ public class UserController {
     public Result login(@RequestBody User user){
         log.info("登录: {}", user);
         User u = userService.checkExist(user);
-        //用户名存在
         if(u != null){
             u = userService.login(user);//执行登录操作
             if(u != null) return Result.success("登录成功",JwtUtils.generateJwt("用户名",u.getNickname()));
             else return Result.error("用户名或密码错误");
         }
-        //用户名不存在
         else{
             return Result.error("用户不存在");
         }
@@ -39,8 +37,8 @@ public class UserController {
         return Result.success("注册成功",JwtUtils.generateJwt("用户名",user.getNickname()));
     }
     @GetMapping("/user/list")
-    public Result getUserList(@RequestParam(required = false) Integer uid){
-        List<User> list = userService.getUsers();
+    public Result getUserList(@RequestParam(required = false) Integer id){
+        List<User> list = userService.getUsers(id);
         return Result.success(list);
     }
     @PostMapping("/user/delete")

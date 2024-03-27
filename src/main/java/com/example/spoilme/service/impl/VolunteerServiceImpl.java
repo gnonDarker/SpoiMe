@@ -21,8 +21,8 @@ public class VolunteerServiceImpl implements VolunteerService {
     }
 
     @Override
-    public List<Volunteer> getVolunteerList() {
-        return volunteerMapper.getVolunteerList();
+    public List<Volunteer> getVolunteerList(Integer id) {
+        return volunteerMapper.getVolunteerList(id);
     }
 
     @Override
@@ -33,5 +33,20 @@ public class VolunteerServiceImpl implements VolunteerService {
     @Override
     public void deleteVolunteer(Volunteer volunteer) {
         volunteerMapper.deleteVolunteer(volunteer);
+    }
+
+    @Override
+    public void rejectVolunteer(Integer id, String msg) {
+        volunteerMapper.rejectVolunteer( id,  msg);
+    }
+
+    @Override
+    public void approveVolunteer(Integer id) {
+        volunteerMapper.approveVolunteer( id);
+    }
+
+    @Override
+    public void reconsiderVolunteer(Integer id, String msg) {
+        volunteerMapper.reconsiderVolunteer( id,  msg);
     }
 }

@@ -1,10 +1,7 @@
 package com.example.spoilme.mapper;
 
 import com.example.spoilme.pojo.Volunteer;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -15,11 +12,17 @@ public interface VolunteerMapper {
             "(#{userId},#{name},#{sex},#{phone},#{wechat},#{spareTime},#{experience},#{nickname},#{age},#{address},#{skill})")
     void addVolunteer(Volunteer volunteer);
 
-    @Select("select * from t_volunteers")
-    List<Volunteer> getVolunteerList();
+    @Select("select * from t_volunteers where id=#{id}")
+    List<Volunteer> getVolunteerList(Integer id);
 
     void modifyVolunteer(Volunteer volunteer);
 
     @Delete("DELETE from t_volunteers where id=#{id} or nickname = #{nickname} or name = #{name}")
     void deleteVolunteer(Volunteer volunteer);
+    @Update("update t_volunteers set reject_reason=#{msg}, state = 'rejected' where id=#{id}")
+    void rejectVolunteer(Integer id, String msg);
+    @Update("update t_volunteers set reject_reason='',state = 'approved' where id=#{id}")
+    void approveVolunteer(Integer id);
+    @Update("update t_volunteers set reject_reason=#{msg}, state = 'pending' where id=#{id}")
+    void reconsiderVolunteer(Integer id, String msg);
 }

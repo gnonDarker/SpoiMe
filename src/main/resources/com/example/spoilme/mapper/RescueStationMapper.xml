@@ -6,27 +6,20 @@
     <update id="modifyRescueStation" parameterType="com.example.spoilme.pojo.RescueStation">
         update t_rescue_station
         <trim prefix="set" suffixOverrides=",">
-            <if test="ownerId != null">
-                owner_id = #{ownerId},
-            </if>
-
-            <if test="name != null">
-                name = #{name},
-            </if>
-
-            <if test="address != null">
-                address=#{address},
-            </if>
-            <if test="phone != null">
-                phone=#{phone},
-            </if>
-            <if test="qrcode != null">
-                qrcode=#{qrcode},
-            </if>
-            <if test="state != null">
-                state=#{state},
-            </if>
+            <if test="ownerId != null"> owner_id = #{ownerId},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="address != null"> address=#{address},</if>
+            <if test="phone != null"> phone=#{phone},</if>
+            <if test="qrcode != null">qrcode=#{qrcode},</if>
+            <if test="state != null">state=#{state},</if>
         </trim>
         where id = #{id}
     </update>
+    <select id="getRescueStationList" resultType="com.example.spoilme.pojo.RescueStation">
+        select * from t_rescue_station
+        <where>
+            <if test="id != null"> id = #{id}</if>
+            <if test="userId != null">and owner_id = #{ownerId}</if>
+        </where>
+    </select>
 </mapper>

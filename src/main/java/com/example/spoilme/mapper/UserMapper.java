@@ -9,8 +9,7 @@ import java.util.List;
 public interface UserMapper {
 
     /*查询全部用户数据*/
-    @Select("select * from t_users")
-    List<User> getUsers();
+    List<User> getUsers(Integer id);
 
     @Select("select * from t_users where nickname=#{nickname} and password=#{password}")
     User getByUsernameAndPassword(User user);

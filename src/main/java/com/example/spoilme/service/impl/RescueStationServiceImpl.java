@@ -13,10 +13,9 @@ public class RescueStationServiceImpl implements RescueStationService {
     @Autowired
     private RescueStationMapper rescueStationMapper;
     @Override
-    public List<RescueStation> getRescueList() {
-        return rescueStationMapper.getRescueStationList();
+    public List<RescueStation> getRescueList(Integer id,Integer ownerId) {
+        return rescueStationMapper.getRescueStationList(id,ownerId);
     }
-
     @Override
     public void addRescueStation(RescueStation rescueStation) {
         rescueStationMapper.addRescueStation(rescueStation);
@@ -31,4 +30,20 @@ public class RescueStationServiceImpl implements RescueStationService {
     public void modifyRescueStation(RescueStation rescueStation) {
         rescueStationMapper.modifyRescueStation(rescueStation);
     }
+
+    @Override
+    public void rejectRescueStation(Integer id, String msg) {
+        rescueStationMapper.rejectRescueStation( id,  msg);
+    }
+
+    @Override
+    public void approveRescueStation(Integer id) {
+        rescueStationMapper.approveRescueStation( id);
+    }
+
+    @Override
+    public void reconsiderRescueStation(Integer id, String msg) {
+        rescueStationMapper.reconsiderRescueStation( id,  msg);
+    }
+
 }
