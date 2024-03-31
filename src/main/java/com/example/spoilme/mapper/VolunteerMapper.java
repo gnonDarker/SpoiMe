@@ -12,8 +12,7 @@ public interface VolunteerMapper {
             "(#{userId},#{name},#{sex},#{phone},#{wechat},#{spareTime},#{experience},#{nickname},#{age},#{address},#{skill})")
     void addVolunteer(Volunteer volunteer);
 
-    @Select("select * from t_volunteers where id=#{id}")
-    List<Volunteer> getVolunteerList(Integer id);
+    List<Volunteer> getVolunteer(Volunteer volunteer);
 
     void modifyVolunteer(Volunteer volunteer);
 

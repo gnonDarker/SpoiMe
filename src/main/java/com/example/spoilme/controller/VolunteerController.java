@@ -26,9 +26,9 @@ public class VolunteerController {
         return Result.success("申请成功");
     }
     //获取所有志愿者信息
-    @GetMapping("/v/list")
-    public Result getVolunteerList(@RequestParam(required = false) Integer id){
-        List<Volunteer> list = volunteerService.getVolunteerList(id);
+    @PostMapping("/v/list")
+    public Result getVolunteer(@RequestBody Volunteer volunteer){
+        List<Volunteer> list = volunteerService.getVolunteer(volunteer);
         return Result.success(list);
     }
     @PostMapping("/v/modify")

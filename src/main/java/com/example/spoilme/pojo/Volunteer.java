@@ -20,5 +20,5 @@ public class Volunteer {
     private Integer age;
     private String address;
     private String skill;
-    private Short state;
+    private String state;
 }

@@ -7,7 +7,7 @@ import java.util.List;
 public interface VolunteerService {
     void addVolunteer(Volunteer volunteer);
 
-    List<Volunteer> getVolunteerList(Integer id);
+    List<Volunteer> getVolunteer(Volunteer volunteer);
 
     void modifyVolunteer(Volunteer volunteer);
 

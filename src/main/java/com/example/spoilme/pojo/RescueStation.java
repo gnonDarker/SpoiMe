@@ -17,8 +17,8 @@ public class RescueStation {
     private Integer numberPeople;
     private String workCondition;
     private String address;
-    private Integer numberPets;
-    private Integer numberHelpPets;
+    private Integer numberPet;
+    private Integer numberHelpPet;
     private Float amountLossPerMouth;
     private Boolean isNeedVolunteer;
     private String qrcode;

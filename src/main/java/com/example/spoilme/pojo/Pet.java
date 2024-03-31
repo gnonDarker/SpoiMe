@@ -11,7 +11,7 @@ import java.sql.Time;
 @NoArgsConstructor
 public class Pet {
     private Integer petId;//ID
-    private String petName;//用户名
+    private String petName;//宠物名
     private Integer petOwnerId;//主人id
     private Integer petSex;//宠物性别
     private Integer petAge;//年龄

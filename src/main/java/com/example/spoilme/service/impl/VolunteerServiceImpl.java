@@ -21,8 +21,8 @@ public class VolunteerServiceImpl implements VolunteerService {
     }
 
     @Override
-    public List<Volunteer> getVolunteerList(Integer id) {
-        return volunteerMapper.getVolunteerList(id);
+    public List<Volunteer> getVolunteer(Volunteer volunteer) {
+        return volunteerMapper.getVolunteer(volunteer);
     }
 
     @Override

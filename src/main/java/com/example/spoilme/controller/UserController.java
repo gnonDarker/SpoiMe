@@ -20,6 +20,10 @@ public class UserController {
     @PostMapping("/login")
     public Result login(@RequestBody User user){
         log.info("登录: {}", user);
+        if(user.getName() != null)user.setNickname(user.getName());
+        user.setName(null);
+        log.info("登录: {}", user);
+
         User u = userService.checkExist(user);
         if(u != null){
             u = userService.login(user);//执行登录操作
@@ -32,9 +36,17 @@ public class UserController {
     }
     @PostMapping("/register")
     public Result register(@RequestBody User user){
+        if(user.getName() != null) user.setNickname(user.getName());
+        user.setName(null);
         log.info("用户注册："+user);
-        userService.register(user);//执行注册操作
-        return Result.success("注册成功",JwtUtils.generateJwt("用户名",user.getNickname()));
+        User u = userService.checkExist(user);
+        if(u == null){
+            userService.register(user);//执行注册操作
+            return Result.success("登录成功",JwtUtils.generateJwt("用户名",user.getNickname()));
+        }
+        else{
+            return Result.error("用户已存在");
+        }
     }
     @GetMapping("/user/list")
     public Result getUserList(@RequestParam(required = false) Integer id){

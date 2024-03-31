@@ -2,7 +2,6 @@ package com.example.spoilme.config;
 
 
 import com.example.spoilme.interceptor.LoginCheckInterceptor;
-import com.example.spoilme.pojo.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -32,9 +31,4 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedHeaders("*"); // 允许所有请求头
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/photos/**")
-                .addResourceLocations("file:" + Constant.fileURL);
-    }
 }

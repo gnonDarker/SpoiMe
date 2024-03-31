@@ -19,7 +19,11 @@
         select * from t_rescue_station
         <where>
             <if test="id != null"> id = #{id}</if>
-            <if test="userId != null">and owner_id = #{ownerId}</if>
+            <if test="ownerId != null">and owner_id = #{ownerId}</if>
         </where>
     </select>
+    <insert id="addRescueStation" parameterType="com.example.spoilme.pojo.RescueStation">
+        insert into t_rescue_station(owner_id, station_name, found_time, number_people, work_condition, address, number_pet, number_help_pet, amount_loss_per_mouth, is_need_volunteer, shipping_address, official_website, administrator, wechat, mail, phone) VALUE
+        (#{ownerId},#{stationName},#{foundTime},#{numberPeople},#{workCondition},#{address},#{numberPet},#{numberHelpPet},#{amountLossPerMouth},#{isNeedVolunteer},#{shippingAddress},#{officialWebsite},#{administrator},#{wechat},#{mail},#{phone})
+    </insert>
 </mapper>

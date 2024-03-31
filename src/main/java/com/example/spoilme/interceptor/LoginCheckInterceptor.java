@@ -22,12 +22,6 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
             System.out.println("OPTIONS请求，放行");
             return true;
         }
-        String url = request.getRequestURL().toString();
-        log.info("url:"+url);
-        if (url.contains("/photos/")) {
-            log.info("对于图片请求直接放行:"+url);
-            return true; // 对于图片请求直接放行
-        }
         String jwt = request.getHeader("token");
         //判断是否存在，若不存在则不放行
         if(!StringUtils.hasLength(jwt)){

@@ -10,8 +10,6 @@ public interface RescueStationMapper {
 
     List<RescueStation> getRescueStationList(Integer id,Integer ownerId);
 
-    @Insert("INSERT INTO t_rescue_station(owner_id, station_name,address, phone,qrcode) VALUE (" +
-            "#{ownerId}, #{StationName},#{address}, #{phone},#{qrcode})")
     void addRescueStation(RescueStation rescueStation);
     @Delete("DELETE FROM t_rescue_station where id=#{id} or station_name=#{stationName}")
     void deleteRescueStation(RescueStation rescueStation);

@@ -7,6 +7,7 @@
     <update id="modifyUser" parameterType="com.example.spoilme.pojo.User">
         update t_users
         <trim prefix="set" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
             <if test="nickname != null">nickname = #{nickname},</if>
             <if test="password != null">password=#{password},</if>
             <if test="avatar != null">avatar=#{avatar},</if>
@@ -18,7 +19,7 @@
         where id = #{id}
     </update>
     <select id="getUsers" resultType="com.example.spoilme.pojo.User">
-        select * from t_users
+        select id, name, nickname, avatar, sex, date, mail, phone, role from t_users
         <where>
             <if test="id != null"> id = #{id}</if>
         </where>
