@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Time;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -13,7 +14,7 @@ public class RescueStation {
     private Integer id;
     private Integer ownerId;
     private String stationName;
-    private Time foundTime;
+    private Date foundTime;
     private Integer numberPeople;
     private String workCondition;
     private String address;

@@ -3,6 +3,7 @@ package com.example.spoilme.service.impl;
 import com.example.spoilme.mapper.UserMapper;
 import com.example.spoilme.pojo.User;
 import com.example.spoilme.service.UserService;
+import com.example.spoilme.utils.Md5Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,11 +23,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(User user) {
+        user.setPassword(Md5Utils.getMD5String(user.getPassword()));
         return userMapper.getByUsernameAndPassword(user);
     }
 
     @Override
     public void register(User user) {
+        user.setPassword(Md5Utils.getMD5String(user.getPassword()));
         userMapper.addByUsernameAndPassword(user);
     }
     @Override
