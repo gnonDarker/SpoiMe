@@ -7,8 +7,10 @@ import com.example.spoilme.exception.ServiceException;
 import com.example.spoilme.mapper.AdoptionMapper;
 import com.example.spoilme.pojo.Adoption;
 import com.example.spoilme.pojo.AdoptionFilter;
+import com.example.spoilme.service.AdoptionApplicationService;
 import com.example.spoilme.service.AdoptionService;
 import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -20,11 +22,12 @@ public class AdoptionServiceImpl implements AdoptionService {
     @Resource
     AdoptionMapper adoptionMapper;
 
-
     @Override
     public void publish(Adoption adoption) {
+        adoption.setId(null);
         adoption.setStatus("unaudited");
         adoption.setTime(new Date());
+        adoption.setCause(null);
         adoptionMapper.insert(adoption);
     }
 
@@ -39,10 +42,6 @@ public class AdoptionServiceImpl implements AdoptionService {
         adoptionMapper.delete(Wrappers.<Adoption>lambdaQuery().eq(Adoption::getId,id));
     }
 
-    @Override
-    public void apply() {
-
-    }
 
     @Override
     public void reject(Integer id, String cause) {

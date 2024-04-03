@@ -6,10 +6,7 @@ import com.example.spoilme.pojo.AdoptionFilter;
 import com.example.spoilme.pojo.Result;
 import com.example.spoilme.service.AdoptionService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/adoption")
@@ -19,7 +16,7 @@ public class AdoptionController {
     AdoptionService adoptionService;
 
     @PostMapping("/publish")
-    public Result publish(Adoption adoption){
+    public Result publish(@RequestBody Adoption adoption){
         adoptionService.publish(adoption);
         return Result.success();
     }
@@ -36,13 +33,13 @@ public class AdoptionController {
         return Result.success();
     }
 
-    @PostMapping("/audit/reject")
+    @PostMapping("/audit/show/reject")
     public Result reject(Integer id,String cause){
         adoptionService.reject(id,cause);
         return Result.success();
     }
 
-    @PostMapping("/audit/approve")
+    @PostMapping("/audit/show/approve")
     public Result approve(Integer id){
         adoptionService.approve(id);
         return Result.success();
