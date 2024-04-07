@@ -48,8 +48,8 @@ public class UserController {
             return Result.error("用户已存在");
         }
     }
-    @GetMapping("/user/list")
-    public Result getUserList(@RequestParam(required = false) Integer id){
+    @PostMapping("/user/list")
+    public Result getUserList(@RequestBody(required = false) Integer id){
         List<User> list = userService.getUsers(id);
         return Result.success(list);
     }

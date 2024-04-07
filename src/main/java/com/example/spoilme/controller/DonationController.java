@@ -30,12 +30,12 @@ public class DonationController {
         donationService.donateMoney(donationMoney);
         return Result.success("捐款成功");
     }
-    @GetMapping("/material/list")
+    @PostMapping("/material/list")
     public Result getDonateMaterialList(){
         List<DonationMaterial> list = donationService.getMaterialList();
         return Result.success(list);
     }
-    @GetMapping("/money/list")
+    @PostMapping("/money/list")
     public Result getDonateMoneyList(){
         List<DonationMoney> list = donationService.getMoneyList();
         return Result.success(list);

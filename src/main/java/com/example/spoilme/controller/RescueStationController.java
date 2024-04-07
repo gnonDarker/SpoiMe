@@ -15,9 +15,9 @@ public class RescueStationController {
     @Autowired
     private RescueStationService rescueStationService;
 
-    @GetMapping("/rescue/list")
-    public Result getRescueList(@RequestParam(required = false) Integer id,
-                                @RequestParam(required = false) Integer ownerId){
+    @PostMapping("/rescue/list")
+    public Result getRescueList(@RequestBody(required = false) Integer id,
+                                @RequestBody(required = false) Integer ownerId){
         List<RescueStation> list = rescueStationService.getRescueList(id,ownerId);
         return Result.success(list);
     }
