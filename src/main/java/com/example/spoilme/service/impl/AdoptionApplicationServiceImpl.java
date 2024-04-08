@@ -12,7 +12,6 @@ import com.example.spoilme.service.AdoptionApplicationService;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.List;
 
 @Service
 public class AdoptionApplicationServiceImpl extends ServiceImpl<AdoptionApplicationMapper, AdoptionApplication> implements AdoptionApplicationService {
@@ -29,7 +28,9 @@ public class AdoptionApplicationServiceImpl extends ServiceImpl<AdoptionApplicat
 
     @Override
     public void rejectApply(Integer id, String cause) {
-        LambdaQueryWrapper<AdoptionApplication> queryWrapper = Wrappers.<AdoptionApplication>lambdaQuery().eq(AdoptionApplication::getId, id);
+        LambdaQueryWrapper<AdoptionApplication> queryWrapper = Wrappers.<AdoptionApplication>lambdaQuery()
+                .eq(AdoptionApplication::getId, id)
+                .eq(AdoptionApplication::getStatus, "unaudited");
         AdoptionApplication aa = baseMapper.selectOne(queryWrapper);
         if(aa==null){
             throw new ServiceException("-1","领养申请不存在");
@@ -42,7 +43,9 @@ public class AdoptionApplicationServiceImpl extends ServiceImpl<AdoptionApplicat
 
     @Override
     public void approveApply(Integer id) {
-        LambdaQueryWrapper<AdoptionApplication> queryWrapper = Wrappers.<AdoptionApplication>lambdaQuery().eq(AdoptionApplication::getId, id);
+        LambdaQueryWrapper<AdoptionApplication> queryWrapper = Wrappers.<AdoptionApplication>lambdaQuery()
+                .eq(AdoptionApplication::getId, id)
+                .eq(AdoptionApplication::getStatus, "unaudited");
         AdoptionApplication aa = baseMapper.selectOne(queryWrapper);
         if(aa==null){
             throw new ServiceException("-1","领养申请不存在");
@@ -64,12 +67,14 @@ public class AdoptionApplicationServiceImpl extends ServiceImpl<AdoptionApplicat
     @Override
     public void cancelApplication(Integer id) {
         LambdaQueryWrapper<AdoptionApplication> queryWrapper = Wrappers.lambdaQuery(AdoptionApplication.class)
-                .in(AdoptionApplication::getId, id)
+                .eq(AdoptionApplication::getId, id)
+                .eq(AdoptionApplication::getStatus, "unaudited")
                 .eq(AdoptionApplication::getDelFlag, 0);
         AdoptionApplication adoptionApplication = baseMapper.selectOne(queryWrapper);
         if(adoptionApplication == null){
             throw new ServiceException("-1","领养申请不存在");
         }
+        adoptionApplication.setStatus("cancel");
         adoptionApplication.setDelFlag(1);
         baseMapper.update(adoptionApplication,queryWrapper);
     }
