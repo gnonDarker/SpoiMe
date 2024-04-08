@@ -9,48 +9,47 @@ import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/adoption")
 public class AdoptionController {
 
     @Resource
     AdoptionService adoptionService;
 
-    @PostMapping("/publish")
+    @PostMapping("/adoption/publish")
     public Result publish(@RequestBody Adoption adoption){
         adoptionService.publish(adoption);
         return Result.success();
     }
 
-    @PostMapping("/modify")
+    @PostMapping("/adoption/modify")
     public Result modify(Adoption adoption){
         adoptionService.modify(adoption);
         return Result.success();
     }
 
-    @PostMapping("/delete")
+    @PostMapping("/adoption/delete")
     public Result delete(Integer id){
         adoptionService.delete(id);
         return Result.success();
     }
 
-    @PostMapping("/audit/show/reject")
+    @PostMapping("/adoption/audit/show/reject")
     public Result reject(Integer id,String cause){
         adoptionService.reject(id,cause);
         return Result.success();
     }
 
-    @PostMapping("/audit/show/approve")
+    @PostMapping("/adoption/audit/show/approve")
     public Result approve(Integer id){
         adoptionService.approve(id);
         return Result.success();
     }
 
-    @PostMapping("/getDetails")
+    @PostMapping("/adoption/getDetails")
     public Result getDetails(Integer id){
         return Result.success(adoptionService.getDetails(id));
     }
 
-    @PostMapping("/query")
+    @PostMapping("/adoption/query")
     public Result query(@RequestParam long pageSize,
                         @RequestParam long pageNum,
                         AdoptionFilter adoptionFilter){

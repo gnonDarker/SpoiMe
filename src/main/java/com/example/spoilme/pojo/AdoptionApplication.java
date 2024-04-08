@@ -5,12 +5,14 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @TableName("t_application")
 public class AdoptionApplication implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @TableId(type = IdType.AUTO)
@@ -143,4 +145,9 @@ public class AdoptionApplication implements Serializable {
      * 失败理由
      */
     private String cause;
+
+    /**
+     * 删除标识
+     */
+    private Integer delFlag;
 }
