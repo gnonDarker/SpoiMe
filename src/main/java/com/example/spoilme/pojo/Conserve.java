@@ -6,41 +6,50 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.util.Date;
 
 @Data
-@TableName("t_group")
+@TableName("t_conserve")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Group implements Serializable {
+public class Conserve {
 
     /**
      * id
      */
     @TableId(type = IdType.AUTO)
-    private Long id;
+    private Integer id;
 
     /**
-     * 分组标识
-     */
-    private String gid;
-
-    /**
-     * 分组名称
+     * 服务名称
      */
     private String name;
 
     /**
-     * 背景图片URL
+     * 服务方式
      */
-    private String background;
+    private String serveType;
 
     /**
-     * 分组排序
+     * 地址
      */
-    private Integer sortOrder;
+    private String address;
+
+    /**
+     * 服务内容
+     */
+    private String content;
+
+    /**
+     * 服务站id
+     */
+    private Integer rescueId;
+
+    /**
+     * 分类id
+     */
+    private String gid;
 
     /**
      * 创建时间
@@ -60,4 +69,9 @@ public class Group implements Serializable {
     @TableField(fill = FieldFill.INSERT)
     private Integer delFlag;
 
+    /**
+     * 救助站信息
+     */
+    @TableField(exist = false)
+    private RescueStation rescueStation;
 }

@@ -28,4 +28,6 @@ public interface GroupService extends IService<Group> {
     void deleteGroup(String gid);
 
     void sortGroup(List<Group> requestParam);
+
+    boolean hasGoup(String gid);
 }

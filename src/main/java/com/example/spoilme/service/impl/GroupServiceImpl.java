@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.spoilme.mapper.GroupMapper;
+import com.example.spoilme.pojo.Conserve;
 import com.example.spoilme.pojo.Group;
 import com.example.spoilme.pojo.Result;
 import com.example.spoilme.service.GroupService;
@@ -73,5 +74,11 @@ public class GroupServiceImpl extends ServiceImpl<GroupMapper, Group> implements
                     .eq(Group::getDelFlag, 0);
             update(updateWrapper);
         });
+    }
+
+    @Override
+    public boolean hasGoup(String gid) {
+        Group group = baseMapper.selectOne(Wrappers.lambdaUpdate(Group.class).eq(Group::getGid, gid).eq(Group::getDelFlag, 0));
+        return group != null;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.spoilme.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("t_rescue_station")
 public class RescueStation {
     private Integer id;
     private Integer ownerId;

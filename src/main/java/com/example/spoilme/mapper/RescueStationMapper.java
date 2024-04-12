@@ -1,12 +1,13 @@
 package com.example.spoilme.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.spoilme.pojo.RescueStation;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
-public interface RescueStationMapper {
+public interface RescueStationMapper extends BaseMapper<RescueStation> {
 
     List<RescueStation> getRescueStationList(Integer id,Integer ownerId);
 

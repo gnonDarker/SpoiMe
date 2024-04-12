@@ -22,7 +22,7 @@ public class GroupController {
     /**
      * 创建分组
      */
-    @PostMapping("/api/short-link/admin/v1/group")
+    @PostMapping("/conserve/group/save")
     public Result saveGroup(@RequestBody Group requestParam){
         groupService.saveGroup(requestParam);
         return Result.success();
@@ -31,7 +31,7 @@ public class GroupController {
     /**
      * 获取分组
      */
-    @GetMapping("/api/short-link/admin/v1/group")
+    @GetMapping("/conserve/group/list")
     public Result listGroup(){
         return Result.success(groupService.listGroup());
     }
@@ -39,7 +39,7 @@ public class GroupController {
     /**
      * 修改分组
      */
-    @PutMapping("/api/short-link/admin/v1/group")
+    @PostMapping("/conserve/group/update")
     public Result update(@RequestBody Group requestParam){
         groupService.updateGroup(requestParam);
         return Result.success();
@@ -48,7 +48,7 @@ public class GroupController {
     /**
      * 删除分组
      */
-    @DeleteMapping("/api/short-link/admin/v1/group")
+    @DeleteMapping("/conserve/group/delete")
     public Result delete(@RequestParam String gid){
         groupService.deleteGroup(gid);
         return Result.success();
@@ -57,7 +57,7 @@ public class GroupController {
     /**
      * 分组排序
      */
-    @PostMapping("/api/short-link/admin/v1/group/sort")
+    @PostMapping("/conserve/group/sort")
     public Result sort(@RequestBody List<Group> requestParam){
         groupService.sortGroup(requestParam);
         return Result.success();
