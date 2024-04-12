@@ -1,5 +1,6 @@
 package com.example.spoilme.service.impl;
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.example.spoilme.mapper.RescueStationMapper;
 import com.example.spoilme.pojo.RescueStation;
 import com.example.spoilme.service.RescueStationService;
@@ -44,6 +45,17 @@ public class RescueStationServiceImpl implements RescueStationService {
     @Override
     public void reconsiderRescueStation(Integer id, String msg) {
         rescueStationMapper.reconsiderRescueStation( id,  msg);
+    }
+
+    @Override
+    public boolean hasRescueStation(Integer id) {
+        RescueStation rescueStation = rescueStationMapper.selectOne(Wrappers.lambdaQuery(RescueStation.class).eq(RescueStation::getId, id));
+        return rescueStation != null;
+    }
+
+    @Override
+    public RescueStation getRescueStation(Integer id) {
+        return rescueStationMapper.selectOne(Wrappers.lambdaQuery(RescueStation.class).eq(RescueStation::getId, id));
     }
 
 }

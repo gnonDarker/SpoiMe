@@ -18,4 +18,8 @@ public interface RescueStationService {
     void approveRescueStation(Integer id);
 
     void reconsiderRescueStation(Integer id, String msg);
+
+    boolean hasRescueStation(Integer id);
+
+    RescueStation getRescueStation(Integer id);
 }
