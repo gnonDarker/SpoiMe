@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class JwtUtils {
     final private static String signKey = "spoilme"; //签名
-    final private static Long expire = 8640000L; //24小时过期
+    final private static Long expire = 2592000000L; //30天过期
 
     /*
      * 生成JWT令牌
