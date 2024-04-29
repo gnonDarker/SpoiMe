@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.spoilme.common.user.UserContext;
 import com.example.spoilme.exception.ServiceException;
 import com.example.spoilme.mapper.AdoptionApplicationMapper;
 import com.example.spoilme.pojo.AdoptionApplication;
@@ -23,6 +24,7 @@ public class AdoptionApplicationServiceImpl extends ServiceImpl<AdoptionApplicat
         adoptionApplication.setStatus("unaudited");
         adoptionApplication.setCreateTime(new Date());
         adoptionApplication.setDelFlag(0);
+        adoptionApplication.setUserId(UserContext.getUserId());
         baseMapper.insert(adoptionApplication);
     }
 

@@ -2,6 +2,9 @@ package com.example.spoilme.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
 
+import com.alibaba.fastjson2.JSON;
+import com.example.spoilme.common.user.UserContext;
+import com.example.spoilme.common.user.UserInfo;
 import com.example.spoilme.pojo.Result;
 import com.example.spoilme.utils.JwtUtils;
 import jakarta.servlet.http.HttpServletRequest;
@@ -34,6 +37,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         //校验令牌
         try {
             JwtUtils.parseJWT(jwt);
+            UserContext.setUser(JwtUtils.parseTokenToUserInfo(jwt));
         } catch (Exception e) {
             log.info(e.getMessage());
             log.info("解析令牌失败");

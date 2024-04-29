@@ -12,6 +12,7 @@ import java.util.Date;
 public class Adoption {
     @TableId(type = IdType.AUTO)
     private Integer id;
+    private Integer userId;
     private String cover;
     @TableField(value = "pet_name")
     private String petName;

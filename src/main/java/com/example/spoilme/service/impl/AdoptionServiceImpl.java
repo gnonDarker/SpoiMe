@@ -3,6 +3,7 @@ package com.example.spoilme.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.spoilme.common.user.UserContext;
 import com.example.spoilme.exception.ServiceException;
 import com.example.spoilme.mapper.AdoptionMapper;
 import com.example.spoilme.pojo.Adoption;
@@ -28,6 +29,7 @@ public class AdoptionServiceImpl implements AdoptionService {
         adoption.setStatus("unaudited");
         adoption.setTime(new Date());
         adoption.setCause(null);
+        adoption.setUserId(UserContext.getUserId());
         adoptionMapper.insert(adoption);
     }
 

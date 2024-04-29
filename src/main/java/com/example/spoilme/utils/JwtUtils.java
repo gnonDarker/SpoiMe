@@ -1,6 +1,6 @@
 package com.example.spoilme.utils;
 
-import com.alibaba.fastjson2.function.impl.ToInteger;
+import com.example.spoilme.common.user.UserInfo;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -64,6 +64,14 @@ public class JwtUtils {
     public static Integer getTokenId(String jwt){
         Claims claims = parseJWT(jwt);
         return Integer.parseInt(claims.get("userId").toString());
+    }
+
+    public static UserInfo parseTokenToUserInfo(String jwt){
+        Claims claims = parseJWT(jwt);
+        return UserInfo.builder()
+                .userId(Integer.parseInt(claims.get("userId").toString()))
+                .username(claims.get("nickname").toString())
+                .build();
     }
 
 }

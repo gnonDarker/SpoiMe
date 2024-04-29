@@ -3,6 +3,7 @@ package com.example.spoilme.service.impl;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.spoilme.common.user.UserContext;
 import com.example.spoilme.exception.ServiceException;
 import com.example.spoilme.mapper.ConserveMapper;
 import com.example.spoilme.pojo.Conserve;
@@ -30,6 +31,7 @@ public class ConserveServiceImpl extends ServiceImpl<ConserveMapper, Conserve> i
         if (!rescueStationService.hasRescueStation(resquestParam.getRescueId())){
             throw new ServiceException("-1", "救助站不存在");
         }
+        resquestParam.setUserId(UserContext.getUserId());
         baseMapper.insert(resquestParam);
     }
 

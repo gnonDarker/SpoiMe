@@ -47,6 +47,11 @@ public class Conserve {
     private Integer rescueId;
 
     /**
+     * 用户id
+     */
+    private Integer userId;
+
+    /**
      * 分类id
      */
     private String gid;

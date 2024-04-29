@@ -24,7 +24,7 @@ mybatis:
 
 # 修改端口号
 server:
-  port: 8080
+  port: 8082
 
 # 开始事务管理日志
 logging:
