@@ -52,7 +52,7 @@ public class UserController {
             Map<String, Object> claims = new HashMap<>();
             claims.put("userId", user.getId());
             claims.put("nickname", user.getNickname());
-            return Result.success("登录成功",JwtUtils.generateJwt("用户名",JwtUtils.generateJwt(claims)));
+            return Result.success("注册成功",JwtUtils.generateJwt(claims));
         }
         else{
             return Result.error("用户已存在");
