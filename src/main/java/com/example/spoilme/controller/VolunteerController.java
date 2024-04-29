@@ -3,6 +3,7 @@ package com.example.spoilme.controller;
 import com.example.spoilme.pojo.Result;
 import com.example.spoilme.pojo.Volunteer;
 import com.example.spoilme.service.VolunteerService;
+import com.example.spoilme.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,9 @@ public class VolunteerController {
     private VolunteerService volunteerService;
 
     @PostMapping("/v/apply")
-    public Result applyForVolunteer(@RequestBody Volunteer volunteer){
-
+    public Result applyForVolunteer(@RequestBody Volunteer volunteer,
+                                    @RequestHeader String token){
+        volunteer.setUserId(JwtUtils.getTokenId(token));
         log.info("申请者："+volunteer);
         volunteerService.addVolunteer(volunteer);
         return Result.success("申请成功");
@@ -27,11 +29,15 @@ public class VolunteerController {
     //获取所有志愿者信息
     @PostMapping("/v/list")
     public Result getVolunteer(@RequestBody Volunteer volunteer){
+
+
         List<Volunteer> list = volunteerService.getVolunteer(volunteer);
         return Result.success(list);
     }
     @PostMapping("/v/modify")
-    public Result modifyVolunteer(@RequestBody Volunteer volunteer){
+    public Result modifyVolunteer(@RequestBody Volunteer volunteer,
+                                  @RequestHeader String token){
+        volunteer.setUserId(JwtUtils.getTokenId(token));
         log.info("修改志愿者信息"+volunteer);
         volunteerService.modifyVolunteer(volunteer);
         return Result.success("修改成功");
@@ -53,8 +59,8 @@ public class VolunteerController {
         return Result.success("审核不通过");
     }
     @PostMapping("/v/audit/reconsider")
-    public Result reconsiderVolunteer(@RequestBody Integer id, @RequestBody String msg){
-        volunteerService.reconsiderVolunteer(id,msg);
+    public Result reconsiderVolunteer(@RequestHeader String token, @RequestBody String msg){
+        volunteerService.reconsiderVolunteer(JwtUtils.getTokenId(token),msg);
         return Result.success("已发起申诉");
     }
 }

@@ -3,6 +3,7 @@ package com.example.spoilme.controller;
 import com.example.spoilme.pojo.RescueStation;
 import com.example.spoilme.pojo.Result;
 import com.example.spoilme.service.RescueStationService;
+import com.example.spoilme.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,9 @@ public class RescueStationController {
         return Result.success(list);
     }
     @PostMapping("/rescue/apply")
-    public Result addRescue(@RequestBody RescueStation rescueStation){
+    public Result addRescue(@RequestBody RescueStation rescueStation,
+                            @RequestHeader String token){
+        rescueStation.setOwnerId(JwtUtils.getTokenId(token));
         log.info("申请救助站"+rescueStation);
         rescueStationService.addRescueStation(rescueStation);
         return Result.success("申请成功");
@@ -33,7 +36,9 @@ public class RescueStationController {
         return Result.success("删除成功");
     }
     @PostMapping("/rescue/modify")
-    public Result modifyRescue(@RequestBody RescueStation rescueStation){
+    public Result modifyRescue(@RequestBody RescueStation rescueStation,
+                               @RequestHeader String token){
+        rescueStation.setOwnerId(JwtUtils.getTokenId(token));
         rescueStationService.modifyRescueStation(rescueStation);
         return Result.success("修改成功");
     }

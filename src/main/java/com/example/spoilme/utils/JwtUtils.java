@@ -1,5 +1,6 @@
 package com.example.spoilme.utils;
 
+import com.alibaba.fastjson2.function.impl.ToInteger;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -19,8 +20,8 @@ public class JwtUtils {
      * @return
      */
 
-    //TODO 根据两个字符串生成Token
-    public static String generateJwt(String key,String value){
+    //TODO 根据具体对象生成Token
+    public static String generateJwt(String key,Object value){
         Map<String,Object> claims = new JwtMap();
         claims.put(key,value);
         String jwt = Jwts.builder()
@@ -59,4 +60,10 @@ public class JwtUtils {
                 .getBody();
         return claims;
     }
+
+    public static Integer getTokenId(String jwt){
+        Claims claims = parseJWT(jwt);
+        return Integer.parseInt(claims.get("userId").toString());
+    }
+
 }

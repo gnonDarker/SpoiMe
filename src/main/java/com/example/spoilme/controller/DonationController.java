@@ -4,6 +4,7 @@ import com.example.spoilme.pojo.DonationMaterial;
 import com.example.spoilme.pojo.DonationMoney;
 import com.example.spoilme.pojo.Result;
 import com.example.spoilme.service.DonationService;
+import com.example.spoilme.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,15 +19,19 @@ public class DonationController {
 
     //捐物资
     @PostMapping("/donate/material")
-    public Result donateMaterial(@RequestBody DonationMaterial donationMaterial){
+    public Result donateMaterial(@RequestBody DonationMaterial donationMaterial,
+                                 @RequestHeader String token){
+        donationMaterial.setMaterialUserId(JwtUtils.getTokenId(token));
         log.info("物资:"+donationMaterial);
         donationService.donateMaterial(donationMaterial);
         return Result.success("捐物资成功");
     }
     //捐款
     @PostMapping("/donate/money")
-    public Result donateMoney(@RequestBody DonationMoney donationMoney){
+    public Result donateMoney(@RequestBody DonationMoney donationMoney,
+                              @RequestHeader String token){
         log.info("捐钱:"+donationMoney);
+        donationMoney.setMoneyUserId(JwtUtils.getTokenId(token));
         donationService.donateMoney(donationMoney);
         return Result.success("捐款成功");
     }

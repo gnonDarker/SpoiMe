@@ -5,7 +5,7 @@ import com.example.spoilme.pojo.User;
 import java.util.List;
 
 public interface UserService {
-    List<User> getUsers(Integer id);
+    List<User> getUsers(Integer id,String nickname);
     User checkExist(User user);
 
     User login(User user);
