@@ -4,7 +4,7 @@ spring.datasource:
   driver-class-name:
     com.mysql.cj.jdbc.Driver
   url:
-      jdbc:mysql://47.106.183.36:3306/spoilme?useUnicode=true&characterEncoding=UTF-8
+    jdbc:mysql://127.0.0.1:3306/spoilme?useUnicode=true&characterEncoding=UTF-8
   username:
     spoilme
   password:
@@ -12,8 +12,8 @@ spring.datasource:
 spring:
   data:
     redis:
-      host: kin.qinsy.ltd
-      password: 123456
+      host: 127.0.0.1
+      password: lxz2100301322@
       port: 6379
 
 # mybatis日志输出路径 : Console; 驼峰命名自动映射开关: 打开
@@ -38,6 +38,6 @@ netty:
 #minio
 minio:
   bucket: spoilme
-  endpoint: http://kin.qinsy.ltd:9080
-  accesskey: minioadmin
-  secretKey: minioadmin
+  endpoint: http://127.0.0.1:9000
+  accesskey: vlxz
+  secretKey: 90156115vlxz@
