@@ -59,10 +59,14 @@ public class UserController {
         }
     }
     @PostMapping("/user/list")
-    public Result getUserList(@RequestBody(required = false) Integer id,
-                              @RequestBody(required = false) String nickname){
-        List<User> list = userService.getUsers(id,nickname);
+    public Result getUserList(@RequestBody(required = false) User user){
+        List<User> list = userService.getUsers(user);
         return Result.success(list);
+    }
+    @PostMapping("user/myinfo")
+    public Result getMyInfo(@RequestHeader String token){
+        Integer id = JwtUtils.getTokenId(token);
+        return Result.success(userService.getUser(id));
     }
     @PostMapping("/user/delete")
     public Result deleteUser(@RequestBody User user){

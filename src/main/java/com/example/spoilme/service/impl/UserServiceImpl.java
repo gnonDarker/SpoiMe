@@ -17,8 +17,13 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public List<User> getUsers(Integer id,String nickname) {
-        return userMapper.getUsers(id,nickname);
+    public List<User> getUsers(User user) {
+        return userMapper.getUsers(user);
+    }
+
+    @Override
+    public User getUser(Integer id) {
+        return userMapper.getUser(id);
     }
 
     @Override

@@ -4,7 +4,7 @@ spring.datasource:
   driver-class-name:
     com.mysql.cj.jdbc.Driver
   url:
-      jdbc:mysql://kin.qinsy.ltd:3306/spoilme?useUnicode=true&characterEncoding=UTF-8
+      jdbc:mysql://47.106.183.36:3306/spoilme?useUnicode=true&characterEncoding=UTF-8
   username:
     spoilme
   password:

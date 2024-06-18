@@ -29,8 +29,6 @@ public class VolunteerController {
     //获取所有志愿者信息
     @PostMapping("/v/list")
     public Result getVolunteer(@RequestBody Volunteer volunteer){
-
-
         List<Volunteer> list = volunteerService.getVolunteer(volunteer);
         return Result.success(list);
     }

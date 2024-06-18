@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserMapper {
 
     /*查询全部用户数据*/
-    List<User> getUsers(Integer id,String nickname);
+    List<User> getUsers(User user);
 
     @Select("select * from t_users where nickname=#{nickname} and password=#{password}")
     User getByUsernameAndPassword(User user);
@@ -29,4 +29,7 @@ public interface UserMapper {
     void modifyUser(User user);
     @Delete("delete from t_users where nickname = #{nickname}")
     void deleteUserByName(String name);
+
+    @Select("select * from t_users where id=#{id}")
+    User getUser(Integer id);
 }
