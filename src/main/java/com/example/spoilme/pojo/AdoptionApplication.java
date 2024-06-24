@@ -27,6 +27,11 @@ public class AdoptionApplication implements Serializable {
     private Integer userId;
 
     /**
+     * 领养信息id
+     */
+    private Integer adoptionId;
+
+    /**
      * real_name
      */
     private String realName;

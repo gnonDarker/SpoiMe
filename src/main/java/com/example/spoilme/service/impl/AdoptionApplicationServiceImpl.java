@@ -10,6 +10,8 @@ import com.example.spoilme.mapper.AdoptionApplicationMapper;
 import com.example.spoilme.pojo.AdoptionApplication;
 import com.example.spoilme.pojo.ApplicationFilter;
 import com.example.spoilme.service.AdoptionApplicationService;
+import com.example.spoilme.service.AdoptionService;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -17,7 +19,8 @@ import java.util.Date;
 @Service
 public class AdoptionApplicationServiceImpl extends ServiceImpl<AdoptionApplicationMapper, AdoptionApplication> implements AdoptionApplicationService {
 
-
+    @Resource
+    AdoptionService adoptionService;
 
     @Override
     public void apply(AdoptionApplication adoptionApplication) {
@@ -52,6 +55,7 @@ public class AdoptionApplicationServiceImpl extends ServiceImpl<AdoptionApplicat
         if(aa==null){
             throw new ServiceException("-1","领养申请不存在");
         }
+        adoptionService.adopt(aa.getAdoptionId());
         aa.setStatus("audited");
         aa.setUpdateTime(new Date());
         baseMapper.update(aa,queryWrapper);

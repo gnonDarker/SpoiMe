@@ -52,7 +52,7 @@ public class AdoptionController {
     @PostMapping("/adoption/query")
     public Result query(@RequestParam long pageSize,
                         @RequestParam long pageNum,
-                        AdoptionFilter adoptionFilter){
+                        @RequestBody AdoptionFilter adoptionFilter){
         Page<Adoption> page=new Page<>(pageNum,pageSize);
         return Result.success(adoptionService.pageList(page,adoptionFilter));
     }

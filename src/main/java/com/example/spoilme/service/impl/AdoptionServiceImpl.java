@@ -112,4 +112,21 @@ public class AdoptionServiceImpl implements AdoptionService {
         }
         return adoptionMapper.selectPage(page,queryWrapper);
     }
+
+    @Override
+    public void adopt(Integer id) {
+        Adoption adoption=adoptionMapper.selectOne(Wrappers.<Adoption>lambdaQuery().eq(Adoption::getId,id));
+        if(adoption==null){
+            throw new ServiceException("-1","领养信息不存在");
+        }
+        if(adoption.getStatus().equals("adopted")){
+            throw new ServiceException("-1","领养信息已被领养");
+        }
+        if(adoption.getStatus().equals("unaudited")){
+            throw new ServiceException("-1","领养信息未审核");
+        }
+        adoption.setStatus("adopted");
+        adoptionMapper.update(adoption, Wrappers.<Adoption>lambdaQuery().eq(Adoption::getId,adoption.getId()));
+    }
+
 }

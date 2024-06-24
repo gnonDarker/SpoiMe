@@ -14,4 +14,6 @@ public interface AdoptionService {
     void approve(Integer id);
     Adoption getDetails(Integer id);
     Page<Adoption> pageList(Page<Adoption> page,AdoptionFilter adoptionFilter);
+
+    void adopt(Integer id);
 }
