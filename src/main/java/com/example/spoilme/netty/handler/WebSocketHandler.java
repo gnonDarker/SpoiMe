@@ -34,8 +34,8 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
     public WebSocketHandler(){
         redisTemplate=new RedisTemplate<>();
         LettuceConnectionFactory lettuceConnectionFactory=new LettuceConnectionFactory();
-        lettuceConnectionFactory.setHostName("kin.qinsy.ltd");
-        lettuceConnectionFactory.setPassword("123456");
+        lettuceConnectionFactory.setHostName("127.0.0.1");
+        lettuceConnectionFactory.setPassword("lxz2100301322@");
         lettuceConnectionFactory.setPort(6379);
         lettuceConnectionFactory.start();
         redisTemplate.setConnectionFactory(lettuceConnectionFactory);
